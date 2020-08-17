@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel_blog</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&display=swap">
+  
+  <style>
+        html {
+            background-color: skyblue;
+        }
+
+        * {
+            font-family: 'Baloo Bhai 2', cursive;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            box-sizing: content-box;
+        }
+
+        #entire {
+
+            height: 100vh;
+            overflow: hidden;
+            width: 100vw;
+            background-size: cover;
+            display: flex;
+            /* border: 3px solid red; */
+            /* background-size: 100% 100%; */
+            /* background-repeat: no-repeat; */
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* overflow: hidden; */
+
+        }
+
+        .bac_img {
+            /* position: absolute; */
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .description {
+            width: 40%;
+            margin: auto;
+            font-size: 30px;
+            color: black;
+            font-weight: bolder;
+            position: relative;
+            /* -webkit-text-stroke: 2px solid black; */
+        }
+
+
+        ul {
+            z-index: 2;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(166, 209, 226);
+            /* position: -webkit-sticky; */
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        li {
+            cursor: pointer;
+            float: right;
+        }
+
+        #day_li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 50px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        li a:hover {
+            background-color: #111;
+            text-decoration: underline;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+
+        .visited {
+            font-size: 30px;
+            background-color: skyblue;
+            height: 80px;
+            /* display: flex; */
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            clear: both;
+        }
+
+        .visited p {
+            display: inline;
+            margin-left: 730px;
+            padding-top: 10px;
+        }
+
+        #blog {
+            display: flex;
+            background-color: skyblue;
+            /* grid-template-columns: 1fr 1fr;
+            grid-template-rows: 500px 500px; */
+            /* grid-gap: 10px; */
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+
+        }
+
+        #blog .image_description {
+            position: relative;
+        }
+
+        #blog .image_description a {
+            border-radius: 50px;
+            width: 100%;
+            height: 80%;
+            flex-grow: 2;
+            /* height: auto; */
+            overflow: hidden;
+            display: block;
+            /* padding: 5px; */
+            opacity: 0.99;
+        }
+
+        #blog .image_description p {
+            text-align: center;
+            /* overflow: hidden; */
+            font-size: 20px;
+            color: skyblue;
+            padding: 10px;
+            font-weight: bold;
+            position: absolute;
+            /* text-shadow: 1px 1px 0 #333,
+                -1px -1px 0 #333,
+                1px -1px 0 #333,
+                -1px 1px 0 #333,
+                2px 2px 5px rgba(0, 0, 0, 0.65); */
+            /* top: 50px; */
+
+            bottom: 40px;
+
+        }
+
+        #blog .image_description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 49.8%;
+            height: 400px;
+            overflow: hidden;
+            margin: 1px;
+            /* padding: 5px; */
+        }
+
+        #blog img {
+            width: 100%;
+        }
+
+        #blog img:hover {
+            /* opacity: 0.9; */
+            transition: all 1s;
+            transform: scale(1.1);
+        }
+
+        #contact {
+            clear: both;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            /* border: 3px solid black; */
+        }
+
+        #contact h1 {
+            display: inline-block;
+            margin: auto;
+            padding-top: 15px;
+            font-size: 35px;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            background: url(https://3.bp.blogspot.com/-CseK_wQGJi8/Vtv2Hj2oXSI/AAAAAAAArMA/veX4ZYrSCbI/s1600/vintage-travel-wallpaper.jpg);
+
+            /* background-color: skyblue; */
+            /* background-size: 100% 100%; */
+            background-size: cover;
+        }
+
+        .contact-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 35px;
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 97%;
+            padding: 7px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-box form {
+            width: 40%;
+        }
+
+        .contact-box label {
+            font-size: 1.3rem;
+        }
+
+        #welcome {
+            position: absolute;
+            padding: 20px;
+            width: 500px;
+            font-size: 45px;
+            text-align: center;
+            font-weight: bolder;
+            top: 51px;
+            left: 35vw;
+        }
+
+        .subscription {
+            float: right;
+            border-radius: 50px;
+            background-color: rgb(31, 231, 31);
+            margin-right: 20px;
+            padding: 10px;
+
+        }
+
+        .subscription a {
+            text-decoration: none;
+
+
+        }
+
+        .subs::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            background: url(https://3.bp.blogspot.com/-CseK_wQGJi8/Vtv2Hj2oXSI/AAAAAAAArMA/veX4ZYrSCbI/s1600/vintage-travel-wallpaper.jpg);
+
+            /* background-color: skyblue; */
+            /* background-size: 100% 100%; */
+            background-size: cover;
+        }
+
+
+        .subs {
+            /* background: url(https://3.bp.blogspot.com/-CseK_wQGJi8/Vtv2Hj2oXSI/AAAAAAAArMA/veX4ZYrSCbI/s1600/vintage-travel-wallpaper.jpg); */
+            /* opacity: 0.5; */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 20px;
+        }
+
+        .subs .form-group {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .subs input {
+            width: 700px;
+            border-radius: 10px;
+            margin-left: 15px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><input type="search" style="margin-top: 14px ;font-size: 20px;" placeholder="Search"></li>
+            <!-- <li class="form-group">
+                <label for="message">Message: </label>
+                <textarea name="message" id="mehssage" cols="10" rows="1"></textarea>
+            </li> -->
+            <li><a href="#" id="date"></a></li>
+            <li id='day_li'><a href="#" id="day"></a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a class="active" href="#entire">Home</a></li>
+        </ul>
+    </nav>
+    <div id="welcome">
+
+    </div>
+    <header>
+        <div id="entire">
+            <div class="description">
+                What a busy day! To start off, I could barely sleep last night because of the hard bed we slept on
+                (can't
+                say I don't miss my own bed from home!) and because of my excitement at touring Simla for the first
+                time!
+                I've always wanted to visit Simla, and I'm finally here!
+                </p>
+            </div>
+            <img src="https://img.wallpapersafari.com/desktop/1680/1050/37/23/6fWHx7.jpg" alt="image" class="bac_img">
+        </div>
+    </header>
+
+    <div class="visited">
+        <div class="subscription">
+            <a href="#subss">
+
+                Subscribe
+            </a>
+        </div>
+        <p>
+            Amazing places to visit!!!
+        </p>
+    </div>
+
+    <div id="blog">
+        <div class="image_description">
+            <a href="https://www.fabhotels.com/blog/lotus-temple-delhi/" target="_blank">
+                <img src="https://www.transindiatravels.com/wp-content/uploads/lotus-temple.jpg" alt="fas">
+            </a>
+            <p>Lotus Temple: A Spectacular Place of Worship. The Lotus Temple (also known as Kamal Mandir) in Delhi is a
+                matchless architectural marvel and one of the prime tourist attractions of the National Capital.</p>
+        </div>
+        <div class="image_description">
+
+            <a href="https://www.tripadvisor.in/Tourism-g304552-Shimla_Shimla_District_Himachal_Pradesh-Vacations.html"
+                target="_blank">
+                <img src="https://www.nativeplanet.com/photos/325x244x100/2018/08/photo-92-121659-3.jpg" alt="fas">
+            </a>
+            <p>Snow-capped Himalayan peaks and green pastures surround Shimla, the capital of Himachal Pradesh. Enjoy a
+                heritage walk through Shimla’s Victorian-era architecture, labyrinthine bazaars and lengthy pedestrian
+                shopping mall.</p>
+        </div>
+        <div class="image_description">
+
+            <a href="https://www.thrillophilia.com/attractions/rock-beach" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Puducherry_Harbor.JPG/1280px-Puducherry_Harbor.JPG"
+                    alt="fas">
+            </a>
+            <p>The beach is aligned with cafes, restaurants and pubs overlooking the beach. You can have an exquisite
+                culinary experience while listening to the gushing waves of the ocean.</p>
+        </div>
+        <div class="image_description">
+            <a href="https://www.spain-holiday.com/San-Sebastian/articles/the-beach-of-la-concha-in-san-sebastian-a-beach-you-must-see"
+                target="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQSDYk6Xk6zv7TamvanS8-gd_6pDXWyVY6MwA&usqp=CAU"
+                    alt="fas"></a>
+            <p>La Concha is definitely one of the most refined beaches around the world. The blue and white striped
+                parasols and sun beds, which you can rent on the Concha beach, during summertime, are symbolic for San
+                Sebastián, and they make the beach look extra pretty. </p>
+        </div>
+        <div class="image_description">
+            <a href="https://disneyland.disney.go.com/" target="_blank">
+                <img src="https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2014%2F11%2F201411-w-worlds-most-visited-tourist-attractions-tokyo-disneyland-2000.jpg"
+                    alt="fas"></a>
+            <p>Disneyland has a larger cumulative attendance than any other theme park in the world, with 726 million
+                visits since it opened (as of December 2018). In 2018, the park had approximately 18.6 million visits,
+                making it the second most visited amusement park in the world that year, behind only Magic Kingdom, the
+                very park it inspired </p>
+        </div>
+        <div class="image_description">
+            <a href="https://disneyland.disney.go.com/" target="_blank">
+                <img src="https://preview.telegraph.co.uk/multimedia/archive/01563/kili-corbis_1563951c.jpg"
+                    alt="fas"></a>
+            <p>Mount Kilimanjaro is the tallest mountain on the African continent and the highest free-standing mountain
+                in the world. ... Kilimanjaro has three volcanic cones, Mawenzi, Shira and Kibo</p>
+        </div>
+    </div>
+
+
+    <section id="contact">
+        <h1 class="h-primary center">
+            <span>Contact us </span>
+        </h1>
+        <div class="contact-box">
+            <form action="">
+                <div class="form-group">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email_" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="phone no">Phone no: </label>
+                    <input type="phone" name="phone no" id="phone no" placeholder="Enter your phone no">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message: </label>
+                    <textarea name="message" id="message" cols="30" rows="5"></textarea>
+                </div>
+                <div class="form-group" style="width: 100px;margin-left: 280px;">
+                    <input type="button" onclick="run2()" value="submit" style="width: 84%;">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="subss" class="subs">
+        <h1>Enter details for subscription</h1>
+        <form action="">
+            <div class="form-group">
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone no">Phone no: </label>
+                <input type="tel" id="phone" name="phone" placeholder="1234567899" pattern="[1-9]{1}[0-9]{9}" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" style="padding: 3px 22px; width: 100px; margin-left: 320px;" value="submit">
+            </div>
+            <div class="form-group">
+                <input type="button" onclick="run()" id=submit_sub
+                    style="padding: 3px 22px; width: 100px; margin-left: 320px;" value="check subscription">
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <script>
+        submit = document.getElementById('submit_sub')
+        function run() {
+            alert('You have been successfully subscribed');
+
+        }
+
+
+        function run2() {
+            var name = document.getElementById("name").value;
+            if(name.length>5){
+                alert('length has been exceeded');
+            }
+            console.log(name);
+           
+        }
+
+        name = prompt('Enter your name');
+        function displayTime() {
+            var d = new Date();
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            document.getElementById("day").innerHTML = 'Today is ' + days[d.getDay()];
+
+            if (d.getHours() < 12) {
+                document.getElementById("date").innerHTML = 'Time is : ' + d.getHours() + ' AM :' + d.getMinutes() + ':' + d.getSeconds();
+                document.getElementById('welcome').innerHTML = 'Good morning ' + name;
+
+            }
+
+            else {
+                x = d.getHours() - 12
+                document.getElementById("date").innerHTML = 'Time is : ' + x + ' PM :' + d.getMinutes() + ':' + d.getSeconds();
+                document.getElementById('welcome').innerHTML = 'Good afternoon ' + name;
+                if (d.getHours() > 16) {
+                    document.getElementById('welcome').innerHTML = 'Good evening ' + name;
+
+                }
+
+                if (d.getHours() >= 20) {
+                    document.getElementById('welcome').innerHTML = 'Good night ' + name;
+
+                }
+            }
+        }
+        setInterval(
+            displayTime
+            , 1000)
+
+    </script>
+
+
+</body>
+
+</html>
